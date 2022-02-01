@@ -13,6 +13,8 @@ class SecondViewController: UIViewController {
   var selectedIndex: Int?
   var weatherViewModel: WeatherViewModel?
   
+  @IBOutlet weak var tempView: UIView!
+  @IBOutlet weak var etcView: UIView!
   @IBOutlet weak var cityLabel: UILabel!
   
   @IBOutlet weak var weatherLabel: UILabel!
@@ -27,6 +29,8 @@ class SecondViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    tempView.layer.cornerRadius = 20.0
+    etcView.layer.cornerRadius = 20.0
     setData()
   }
     
@@ -56,5 +60,10 @@ class SecondViewController: UIViewController {
         print("error")
       }
     })
+  }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let nextVC: ThirdViewController = segue.destination as? ThirdViewController else { return }
+    nextVC.selectedIndex = self.selectedIndex // 선택한 cell의 인덱스 다음 VC에 넘김
   }
 }

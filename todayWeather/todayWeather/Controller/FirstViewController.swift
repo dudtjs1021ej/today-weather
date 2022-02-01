@@ -28,7 +28,7 @@ class FirstViewController: UIViewController {
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let nextVC: SecondViewController = segue.destination as? SecondViewController else { return }
     guard let cell: CustomTableViewCell = sender as? CustomTableViewCell else { return }
-    nextVC.selectedIndex = cell.selectIndex
+    nextVC.selectedIndex = cell.selectIndex // 선택한 cell의 index 다음 VC에 넘김
   }
 }
 
