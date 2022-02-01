@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NhV-rW-1lX">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
@@ -19,7 +19,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--First View Controller-->
+        <!--현재 날씨-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="todayWeather" customModuleProvider="target" sceneMemberID="viewController">
@@ -40,11 +40,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Seoul" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EkU-W2-9co">
-                                                    <rect key="frame" x="27" y="11" width="56.5" height="28"/>
+                                                    <rect key="frame" x="27" y="11" width="70.5" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="128" id="arg-rm-vfG"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="arg-rm-vfG"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="20"/>
+                                                    <fontDescription key="fontDescription" name="Poppins-SemiBold" family="Poppins" pointSize="25"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
@@ -54,25 +54,25 @@
                                                     <color key="textColor" red="0.52032039139999997" green="0.52032039139999997" blue="0.52032039139999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="RcQ-MH-TNR">
-                                                    <rect key="frame" x="223.5" y="16" width="105" height="105"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Snow" translatesAutoresizingMaskIntoConstraints="NO" id="RcQ-MH-TNR">
+                                                    <rect key="frame" x="256.5" y="23.5" width="90" height="90"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="105" id="kfV-or-nK5"/>
-                                                        <constraint firstAttribute="height" constant="105" id="kli-u8-5cc"/>
+                                                        <constraint firstAttribute="width" constant="90" id="kfV-or-nK5"/>
+                                                        <constraint firstAttribute="height" constant="90" id="kli-u8-5cc"/>
                                                     </constraints>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="SVp-ic-Vaj">
-                                                    <rect key="frame" x="27" y="47" width="171" height="56"/>
+                                                    <rect key="frame" x="27" y="54" width="222.5" height="49"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dT6-nZ-Z36">
-                                                            <rect key="frame" x="0.0" y="0.0" width="94" height="56"/>
-                                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="40"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-20.5℃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dT6-nZ-Z36">
+                                                            <rect key="frame" x="0.0" y="0.0" width="133.5" height="49"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="35"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-w2-6qY">
-                                                            <rect key="frame" x="110" y="0.0" width="61" height="56"/>
-                                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="30"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30.0%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3aA-w2-6qY">
+                                                            <rect key="frame" x="149.5" y="0.0" width="73" height="49"/>
+                                                            <fontDescription key="fontDescription" name="Poppins-Medium" family="Poppins" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -83,7 +83,7 @@
                                                 <constraint firstItem="YCW-IX-SNM" firstAttribute="centerY" secondItem="tLD-9v-ewS" secondAttribute="centerY" id="5xJ-iG-1Ir"/>
                                                 <constraint firstItem="SVp-ic-Vaj" firstAttribute="top" secondItem="EkU-W2-9co" secondAttribute="bottom" constant="8" id="C0m-bB-n7b"/>
                                                 <constraint firstItem="EkU-W2-9co" firstAttribute="top" secondItem="tLD-9v-ewS" secondAttribute="topMargin" id="DRw-Dv-4zT"/>
-                                                <constraint firstItem="YCW-IX-SNM" firstAttribute="leading" secondItem="RcQ-MH-TNR" secondAttribute="trailing" constant="18" id="cPY-NR-1Re"/>
+                                                <constraint firstItem="YCW-IX-SNM" firstAttribute="leading" secondItem="RcQ-MH-TNR" secondAttribute="trailing" id="cPY-NR-1Re"/>
                                                 <constraint firstItem="SVp-ic-Vaj" firstAttribute="leading" secondItem="tLD-9v-ewS" secondAttribute="leadingMargin" constant="7" id="flj-gf-aJc"/>
                                                 <constraint firstItem="RcQ-MH-TNR" firstAttribute="centerY" secondItem="tLD-9v-ewS" secondAttribute="centerY" id="oEj-vu-Df8"/>
                                                 <constraint firstAttribute="trailing" secondItem="YCW-IX-SNM" secondAttribute="trailing" constant="11" id="rEJ-y8-p71"/>
@@ -104,17 +104,36 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" title="현재 날씨" id="T78-Fw-AdW"/>
                     <connections>
                         <outlet property="tableView" destination="52v-Lq-PYh" id="J8g-DS-170"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="96.428571428571431"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="oLs-HC-aec">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="NhV-rW-1lX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="glc-Y6-FGJ">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="8UW-k4-Wg9"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gm1-IK-GBc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="131.8840579710145" y="96.428571428571431"/>
         </scene>
     </scenes>
     <resources>
-        <image name="sunny" width="48" height="48"/>
+        <image name="Snow" width="48" height="48"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -14,7 +14,9 @@ class FirstViewController: UIViewController {
   
   let customCellIdentifer: String = "customCell"
   let cellSpacingHeight: CGFloat = 5
-  
+  var weatherViewModel: WeatherViewModel?
+  let citieNames = ["Gongju", "Gwangju", "Gumi", "Gunsan", "Daegu", "Daejeon", "Mokpo", "Busan", "Seosan", "Seoul", "Sokcho", "Suwon", "Suncheon", "Ulsan", "Iksan", "Jeonju", "Jeju", "Cheonan", "Cheongju", "Chuncheon"]
+
   // MARK: LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -29,7 +31,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
   
   // cell에 space를 넣기 위해 데이터 개수만큼 section을 생성하고 row는 1개 리턴
   func numberOfSections(in tableView: UITableView) -> Int {
-    return 3
+    return self.citieNames.count
   }
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -39,7 +41,22 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifer, for: indexPath)
             as? CustomTableViewCell else { return UITableViewCell() }
+    
     let index = indexPath.section
+    cell.cityNameLabel.text = citieNames[index]
+    WeatherSurvice().getWeather(cityName: citieNames[index], completion: { result in
+      switch result {
+      case .success(let result):
+        DispatchQueue.main.async {
+          self.weatherViewModel = WeatherViewModel(weatherModel: result)
+          cell.humidityLabel.text = self.weatherViewModel?.humidity
+          cell.tempLabel.text = self.weatherViewModel?.celsius
+          cell.weatherImageView.image = UIImage(named: self.weatherViewModel?.weatherImageName ?? "")
+        }
+      case .failure(_ ):
+        print("error")
+      }
+    })
     return cell
   }
   
