@@ -20,11 +20,11 @@ class FirstViewController: UIViewController {
   // MARK: LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
-   
     tableView.dataSource = self
     tableView.delegate = self
   }
   
+  // MARK: - Methods
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let nextVC: SecondViewController = segue.destination as? SecondViewController else { return }
     guard let cell: CustomTableViewCell = sender as? CustomTableViewCell else { return }
@@ -34,7 +34,6 @@ class FirstViewController: UIViewController {
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
 extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
-  
   // cell에 space를 넣기 위해 데이터 개수만큼 section을 생성하고 row는 1개 리턴
   func numberOfSections(in tableView: UITableView) -> Int {
     return self.citieNames.count
@@ -47,9 +46,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifer, for: indexPath)
             as? CustomTableViewCell else { return UITableViewCell() }
-    
-    cell.selectionStyle = .none
-    
+    cell.selectionStyle = .none // 선택 스타일 none
     let index = indexPath.section
     cell.selectIndex = index
     cell.cityNameLabel.text = citieNames[index]
@@ -72,6 +69,5 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
     return 150.0
   }
-  
 }
 

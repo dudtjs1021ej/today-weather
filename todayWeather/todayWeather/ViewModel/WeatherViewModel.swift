@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK : - Temp
 // 섭씨 화씨 계산 열거형
 enum Temp {
   case fahrenheit(Double)
@@ -22,7 +23,7 @@ enum Temp {
     }
   }
 }
-
+// MARK - WeatherViewModel
 class WeatherViewModel {
   let weatherModel: WeatherModel
   
@@ -30,6 +31,7 @@ class WeatherViewModel {
     self.weatherModel = weatherModel
   }
   
+  // MARK: - Properties
   var humidity: String {
     return String("\(weatherModel.main.humidity)%")
   }
@@ -88,8 +90,7 @@ class WeatherViewModel {
     let fahrenheit = Temp.fahrenheit(weatherModel.main.temp_max).temp
     return String("\(fahrenheit)%")
   }
-  
-  
+
   var weatherImageName: String {
     return String(weatherModel.weather.first?.main ?? "")
   }

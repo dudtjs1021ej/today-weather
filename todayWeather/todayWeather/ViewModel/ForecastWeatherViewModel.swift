@@ -8,19 +8,21 @@
 import Foundation
 import UIKit
 
+// MARK: - GrapType
 enum GraphType {
   case humidity
   case maxTemp
   case minTemp
 }
 
+// MARK: - ForecastWeatherViewModel
 class ForecastWeatherViewModel {
   let model: ForecastWeatherModel
   
   init(model: ForecastWeatherModel) {
     self.model = model
   }
-  
+  // MARK: - Properties
   var humidities: [Double] {
     var humidities: [Double] = []
     for i in 0..<model.list.count {
@@ -51,8 +53,6 @@ class ForecastWeatherViewModel {
     var times: [String] = []
     for i in 0..<model.list.count {
       let time = model.list[i].dt_txt
-      //let day = dates.sub[5...8]
-      print(time)
       times.append(time)
     }
     return times
@@ -62,16 +62,19 @@ class ForecastWeatherViewModel {
     return "\(times.first ?? "") ~ \(times.last ?? "")"
   }
   
-  // x,y 좌표 view의 크기에 맞게 계산하여 이중배열로 리턴
+  
+  // MARK: - Methods
+  // view의 크기에 맞게 계산하여 이중 배열로 x,y 좌표들 리턴
   func getPoints(graphType: GraphType, view: UIView) -> [[Double]] {
     let xSpace = Double(Int(view.frame.width) / (self.humidities.count)) // x 좌표 한 칸 값
-    var xPoints: [Double] = [] // x좌표들
+    var xPoints: [Double] = []
     var x: Double = 0.0
     for _ in 0..<self.humidities.count {
       xPoints.append(x + xSpace)
       x += xSpace
     }
     
+    // 그래프타입에 따라 y좌표 다르게 계산
     switch graphType {
     case .humidity:
       let ySpace = Double(Int(view.frame.height) / 100 ) // y 좌표 한 칸 값 (humidity는 0~100%)
@@ -83,7 +86,7 @@ class ForecastWeatherViewModel {
       return points
       
     case .maxTemp:
-      let ySpace = Double(Int(view.frame.height) / 80 ) // y 좌표 한 칸 값 (temp는 -40~40℃)
+      let ySpace = Double(Int(view.frame.height) / 60 ) // y 좌표 한 칸 값 (temp는 -30~30℃)
       var yPoints: [Double] = []
       for i in 0..<self.maxTemps.count {
         yPoints.append((view.frame.height) - (self.maxTemps[i] * ySpace + (Double(view.frame.height) / 2)))
@@ -92,7 +95,7 @@ class ForecastWeatherViewModel {
       return points
       
     case .minTemp:
-      let ySpace = Double(Int(view.frame.height) / 80 )
+      let ySpace = Double(Int(view.frame.height) / 60 )
       var yPoints: [Double] = []
       for i in 0..<self.minTemps.count {
         yPoints.append((view.frame.height) - (self.minTemps[i] * ySpace + (Double(view.frame.height) / 2)))
@@ -102,50 +105,23 @@ class ForecastWeatherViewModel {
     }
   }
   
-//  func drawXVlaue(view: UIView) {
-//    let points = getPoints(graphType: .humidity, view: view)
-//
-//    for i in 0..<humidities.count {
-//      let label = UILabel()
-//      label.font = UIFont(name: "Helvetica-Bold", size: 5)
-//      label.frame = CGRect(x: points[0][i], y: 5, width: 10, height: 70)
-//      label.text = self.times[i]
-//      label.textColor = .darkGray
-//      label.isHidden = false
-//      view.addSubview(label)
-//    }
-//
-//  }
-//  // y좌표 값 text로 그리기
-//  func drawYValue(view: UIView) {
-//    let points = getPoints(graphType: .humidity, view: view)
-//
-//    for i in 0..<humidities.count {
-//      let label = UILabel()
-//      label.font = UIFont(name: "Helvetica-Bold", size: 10)
-//      label.frame = CGRect(x: 0, y: points[1][i], width: view.frame.width, height: 10)
-//      label.text = String(self.humidities[i])
-//      label.textColor = .darkGray
-//      label.isHidden = false
-//      view.addSubview(label)
-//    }
-//  }
-  
+  // 그래프 그리기
   func drawGraph(graphType: GraphType, view: UIView) {
     
-    drawBackgroundLine(view: view)
+    view.layer.sublayers = nil // 회전 시 그려진 그래프 다 지우고 시작
+    drawBackgroundLine(view: view, color: UIColor.darkGray.cgColor) // 배경선 draw
     let points = getPoints(graphType: graphType, view: view) // 그리는 그래프 타입에 따라 x,y좌표 다르게 받아옴
     
     let layer = CAShapeLayer()
     let path = UIBezierPath()
     layer.fillColor = UIColor.clear.cgColor // 채우기 취소
-   
     path.move(to: CGPoint(x: points[0][0], y: points[1][0]))
-    for i in 1..<self.humidities.count {
+    for i in 1..<self.times.count {
       path.addLine(to: CGPoint(x: points[0][i], y: points[1][i]))
     }
     layer.path = path.cgPath
     
+    // 그래프타입에 따라 선 컬러 다르게 설정
     switch graphType {
     case .humidity:
       layer.strokeColor = UIColor.black.cgColor
@@ -156,13 +132,13 @@ class ForecastWeatherViewModel {
     }
    
     layer.lineWidth = 3
-    layer.lineCap = .round // 둥글게
+    layer.lineCap = .round
     layer.lineJoin = .round
     view.layer.addSublayer(layer)
   }
   
   // 그래프 배경선 그리기
-  func drawBackgroundLine(view: UIView) {
+  func drawBackgroundLine(view: UIView, color: CGColor) {
     let layer = CAShapeLayer()
     let path = UIBezierPath()
     layer.fillColor = UIColor.clear.cgColor // 채우기 취소
@@ -172,11 +148,40 @@ class ForecastWeatherViewModel {
     
     path.addLine(to: CGPoint(x: view.frame.width, y: view.frame.height))
     layer.path = path.cgPath
-    layer.strokeColor = UIColor.darkGray.cgColor
+    layer.strokeColor = color
     layer.lineWidth = 3
     layer.lineCap = .round // 둥글게
     layer.lineJoin = .round
     view.layer.addSublayer(layer)
   }
+  
+  //  func drawXVlaue(view: UIView) {
+  //    let points = getPoints(graphType: .humidity, view: view)
+  //
+  //    for i in 0..<humidities.count {
+  //      let label = UILabel()
+  //      label.font = UIFont(name: "Helvetica-Bold", size: 5)
+  //      label.frame = CGRect(x: points[0][i], y: 5, width: 10, height: 70)
+  //      label.text = self.times[i]
+  //      label.textColor = .darkGray
+  //      label.isHidden = false
+  //      view.addSubview(label)
+  //    }
+  //
+  //  }
+  //  // y좌표 값 text로 그리기
+  //  func drawYValue(view: UIView) {
+  //    let points = getPoints(graphType: .humidity, view: view)
+  //
+  //    for i in 0..<humidities.count {
+  //      let label = UILabel()
+  //      label.font = UIFont(name: "Helvetica-Bold", size: 10)
+  //      label.frame = CGRect(x: 0, y: points[1][i], width: view.frame.width, height: 10)
+  //      label.text = String(self.humidities[i])
+  //      label.textColor = .darkGray
+  //      label.isHidden = false
+  //      view.addSubview(label)
+  //    }
+  //  }
    
 }

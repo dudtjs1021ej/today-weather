@@ -22,7 +22,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Current Weather-->
+        <!--Current-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="FirstViewController" customModule="todayWeather" customModuleProvider="target" sceneMemberID="viewController">
@@ -57,7 +57,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RcQ-MH-TNR">
-                                                    <rect key="frame" x="246.5" y="23.5" width="90" height="90"/>
+                                                    <rect key="frame" x="256.5" y="23.5" width="90" height="90"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="90" id="kfV-or-nK5"/>
                                                         <constraint firstAttribute="height" constant="90" id="kli-u8-5cc"/>
@@ -85,7 +85,7 @@
                                                 <constraint firstItem="YCW-IX-SNM" firstAttribute="centerY" secondItem="tLD-9v-ewS" secondAttribute="centerY" id="5xJ-iG-1Ir"/>
                                                 <constraint firstItem="SVp-ic-Vaj" firstAttribute="top" secondItem="EkU-W2-9co" secondAttribute="bottom" constant="8" id="C0m-bB-n7b"/>
                                                 <constraint firstItem="EkU-W2-9co" firstAttribute="top" secondItem="tLD-9v-ewS" secondAttribute="topMargin" id="DRw-Dv-4zT"/>
-                                                <constraint firstItem="YCW-IX-SNM" firstAttribute="leading" secondItem="RcQ-MH-TNR" secondAttribute="trailing" constant="10" id="cPY-NR-1Re"/>
+                                                <constraint firstItem="YCW-IX-SNM" firstAttribute="leading" secondItem="RcQ-MH-TNR" secondAttribute="trailing" id="cPY-NR-1Re"/>
                                                 <constraint firstItem="SVp-ic-Vaj" firstAttribute="leading" secondItem="tLD-9v-ewS" secondAttribute="leadingMargin" constant="7" id="flj-gf-aJc"/>
                                                 <constraint firstItem="RcQ-MH-TNR" firstAttribute="centerY" secondItem="tLD-9v-ewS" secondAttribute="centerY" id="oEj-vu-Df8"/>
                                                 <constraint firstAttribute="trailing" secondItem="YCW-IX-SNM" secondAttribute="trailing" constant="11" id="rEJ-y8-p71"/>
@@ -113,7 +113,7 @@
                             <constraint firstItem="52v-Lq-PYh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="qVU-5u-bEz"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Current Weather" id="T78-Fw-AdW"/>
+                    <navigationItem key="navigationItem" title="Current" id="T78-Fw-AdW"/>
                     <connections>
                         <outlet property="tableView" destination="52v-Lq-PYh" id="J8g-DS-170"/>
                     </connections>
@@ -337,7 +337,7 @@
         <!--Future-->
         <scene sceneID="EX7-oY-ygl">
             <objects>
-                <viewController id="2DK-iq-H85" customClass="ThirdViewController" customModule="todayWeather" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="thirdVC" id="2DK-iq-H85" customClass="ThirdViewController" customModule="todayWeather" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="efM-EH-SDc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="1300"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -353,7 +353,6 @@
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="82P-96-FPA">
                                                         <rect key="frame" x="45" y="42" width="321" height="200"/>
-                                                        <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="200" id="ST9-Lt-cne"/>
                                                         </constraints>
@@ -392,12 +391,12 @@
                                                     <constraint firstItem="AhF-tf-iIX" firstAttribute="top" secondItem="4cd-hT-RhN" secondAttribute="top" constant="8" id="CRT-4i-Vct"/>
                                                     <constraint firstItem="82P-96-FPA" firstAttribute="leading" secondItem="oNV-1x-3ms" secondAttribute="trailing" constant="3" id="DJp-At-laB"/>
                                                     <constraint firstAttribute="bottom" secondItem="hQ9-Mv-WMZ" secondAttribute="bottom" constant="33" id="DKY-oB-Sqt"/>
+                                                    <constraint firstAttribute="trailing" secondItem="82P-96-FPA" secondAttribute="trailing" constant="8" id="EyP-wc-CJZ"/>
                                                     <constraint firstItem="82P-96-FPA" firstAttribute="leading" secondItem="hQ9-Mv-WMZ" secondAttribute="trailing" constant="4" id="GnM-wl-9UV"/>
                                                     <constraint firstAttribute="height" constant="275" id="UxE-5X-ldG"/>
                                                     <constraint firstItem="AhF-tf-iIX" firstAttribute="leading" secondItem="4cd-hT-RhN" secondAttribute="leading" constant="23" id="Wmc-NU-Tmf"/>
                                                     <constraint firstItem="82P-96-FPA" firstAttribute="leading" secondItem="g6D-Gn-igV" secondAttribute="trailing" constant="4" id="Wtk-Pe-Edv"/>
                                                     <constraint firstItem="82P-96-FPA" firstAttribute="top" secondItem="AhF-tf-iIX" secondAttribute="bottom" constant="10" id="bTY-rC-rsT"/>
-                                                    <constraint firstAttribute="trailing" secondItem="82P-96-FPA" secondAttribute="trailing" constant="8" id="cXU-bz-tT4"/>
                                                     <constraint firstItem="g6D-Gn-igV" firstAttribute="top" secondItem="oNV-1x-3ms" secondAttribute="bottom" constant="79" id="ho3-Xd-GUe"/>
                                                     <constraint firstItem="oNV-1x-3ms" firstAttribute="top" secondItem="AhF-tf-iIX" secondAttribute="bottom" constant="10" id="iZ6-jU-8BB"/>
                                                     <constraint firstItem="hQ9-Mv-WMZ" firstAttribute="top" secondItem="g6D-Gn-igV" secondAttribute="bottom" constant="79" id="mpx-s4-FvM"/>
@@ -429,7 +428,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7J-WN-yMl">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b7J-WN-yMl">
                                                         <rect key="frame" x="18" y="42" width="24" height="14"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
                                                         <nil key="textColor"/>
@@ -441,8 +440,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-40℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z4-l5-oXy">
-                                                        <rect key="frame" x="11.5" y="228" width="29.5" height="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-30℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6z4-l5-oXy">
+                                                        <rect key="frame" x="12" y="228" width="29" height="14"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -491,7 +490,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="40℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAw-S0-zXF">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QAw-S0-zXF">
                                                         <rect key="frame" x="18" y="42" width="24" height="14"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
                                                         <nil key="textColor"/>
@@ -503,8 +502,8 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-40℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsI-Cc-KbJ">
-                                                        <rect key="frame" x="11.5" y="228" width="29.5" height="14"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-30℃" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YsI-Cc-KbJ">
+                                                        <rect key="frame" x="12" y="228" width="29" height="14"/>
                                                         <fontDescription key="fontDescription" name="Poppins-Regular" family="Poppins" pointSize="10"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -606,6 +605,9 @@
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" name="Poppins-Bold" family="Poppins" pointSize="20"/>
                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
                         </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -9,6 +9,7 @@ import UIKit
 
 class SecondViewController: UIViewController {
   
+  // MARK: - Properties
   let citieNames = ["Gongju", "Gwangju", "Gumi", "Gunsan", "Daegu", "Daejeon", "Mokpo", "Busan", "Seosan", "Seoul", "Sokcho", "Suwon", "Suncheon", "Ulsan", "Iksan", "Jeonju", "Jeju", "Cheonan", "Cheongju", "Chuncheon"]
   var selectedIndex: Int?
   var weatherViewModel: WeatherViewModel?
@@ -16,7 +17,6 @@ class SecondViewController: UIViewController {
   @IBOutlet weak var tempView: UIView!
   @IBOutlet weak var etcView: UIView!
   @IBOutlet weak var cityLabel: UILabel!
-  
   @IBOutlet weak var weatherLabel: UILabel!
   @IBOutlet weak var weatherImageView: UIImageView!
   @IBOutlet weak var tempLabel: UILabel!
@@ -27,18 +27,20 @@ class SecondViewController: UIViewController {
   @IBOutlet weak var pressureLabel: UILabel!
   @IBOutlet weak var windLabel: UILabel!
   
+  // MARK: - LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationController?.navigationBar.tintColor = .black // navigationButton 검정으로 변경
     tempView.layer.cornerRadius = 20.0
     etcView.layer.cornerRadius = 20.0
     setData()
   }
     
+  // MARK - Methods
   func setData() {
     guard let selectedIndex = selectedIndex else {
       return
     }
-
     WeatherSurvice().getWeather(cityName: citieNames[selectedIndex], completion: { result in
       switch result {
       case .success(let result):

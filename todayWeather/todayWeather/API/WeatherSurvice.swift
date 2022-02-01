@@ -18,6 +18,7 @@ class WeatherSurvice {
   private var apiKey = Storage().apiKey
   var weatherModel: WeatherModel?
   
+  // MARK: - Methods
   func getWeather(cityName: String, completion: @escaping (Result<WeatherModel, NetworkError>) -> Void ) {
       guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(cityName)&appid=\(apiKey)") else {
         return completion(.failure(.badURL))
@@ -34,7 +35,6 @@ class WeatherSurvice {
           DispatchQueue.main.async {
             completion(.success(result))
           }
-
         } catch {
           completion(.failure(.decodingError))
         }
