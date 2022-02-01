@@ -24,6 +24,12 @@ class FirstViewController: UIViewController {
     tableView.dataSource = self
     tableView.delegate = self
   }
+  
+  override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    guard let nextVC: SecondViewController = segue.destination as? SecondViewController else { return }
+    guard let cell: CustomTableViewCell = sender as? CustomTableViewCell else { return }
+    nextVC.selectedIndex = cell.selectIndex
+  }
 }
 
 // MARK: - UITableViewDataSource, UITableViewDelegate
@@ -42,7 +48,10 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
     guard let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifer, for: indexPath)
             as? CustomTableViewCell else { return UITableViewCell() }
     
+    cell.selectionStyle = .none
+    
     let index = indexPath.section
+    cell.selectIndex = index
     cell.cityNameLabel.text = citieNames[index]
     WeatherSurvice().getWeather(cityName: citieNames[index], completion: { result in
       switch result {
@@ -50,7 +59,7 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
         DispatchQueue.main.async {
           self.weatherViewModel = WeatherViewModel(weatherModel: result)
           cell.humidityLabel.text = self.weatherViewModel?.humidity
-          cell.tempLabel.text = self.weatherViewModel?.celsius
+          cell.tempLabel.text = self.weatherViewModel?.celsiusTemp
           cell.weatherImageView.image = UIImage(named: self.weatherViewModel?.weatherImageName ?? "")
         }
       case .failure(_ ):

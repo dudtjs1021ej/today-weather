@@ -14,6 +14,7 @@ class CustomTableViewCell: UITableViewCell {
   @IBOutlet weak var tempLabel: UILabel!
   @IBOutlet weak var humidityLabel: UILabel!
   @IBOutlet weak var weatherImageView: UIImageView!
+  var selectIndex: Int?
   
   override func awakeFromNib() {
         super.awakeFromNib()

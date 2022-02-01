@@ -14,9 +14,10 @@
 		FA26888427A1881000A32FDE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA26888327A1881000A32FDE /* Assets.xcassets */; };
 		FA26888727A1881000A32FDE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA26888527A1881000A32FDE /* LaunchScreen.storyboard */; };
 		FA2B662827A8E5EE003BA5A7 /* WeatherModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B662727A8E5EE003BA5A7 /* WeatherModel.swift */; };
-		FA2B662A27A8E62B003BA5A7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B662927A8E62B003BA5A7 /* Storage.swift */; };
 		FA2B662D27A8E68E003BA5A7 /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B662C27A8E68E003BA5A7 /* WeatherViewModel.swift */; };
 		FA2B663027A8E6D4003BA5A7 /* WeatherSurvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B662F27A8E6D4003BA5A7 /* WeatherSurvice.swift */; };
+		FA2B663227A8EBF9003BA5A7 /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B663127A8EBF9003BA5A7 /* Storage.swift */; };
+		FA2B663427A9025E003BA5A7 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA2B663327A9025E003BA5A7 /* SecondViewController.swift */; };
 		FA3214B227A2B36F00F9D794 /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA3214B127A2B36F00F9D794 /* CustomTableViewCell.swift */; };
 		FA3214C727A2D5F600F9D794 /* Poppins-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3214B527A2D5F600F9D794 /* Poppins-MediumItalic.ttf */; };
 		FA3214C827A2D5F600F9D794 /* Poppins-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA3214B627A2D5F600F9D794 /* Poppins-ExtraLightItalic.ttf */; };
@@ -48,9 +49,10 @@
 		FA26888627A1881000A32FDE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA26888827A1881000A32FDE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA2B662727A8E5EE003BA5A7 /* WeatherModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherModel.swift; sourceTree = "<group>"; };
-		FA2B662927A8E62B003BA5A7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		FA2B662C27A8E68E003BA5A7 /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		FA2B662F27A8E6D4003BA5A7 /* WeatherSurvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSurvice.swift; sourceTree = "<group>"; };
+		FA2B663127A8EBF9003BA5A7 /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
+		FA2B663327A9025E003BA5A7 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		FA3214B127A2B36F00F9D794 /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
 		FA3214B527A2D5F600F9D794 /* Poppins-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-MediumItalic.ttf"; sourceTree = "<group>"; };
 		FA3214B627A2D5F600F9D794 /* Poppins-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
@@ -109,7 +111,7 @@
 				FA26889127A18AD200A32FDE /* Controller */,
 				FA26888E27A18A8100A32FDE /* Supporting */,
 				FA26888827A1881000A32FDE /* Info.plist */,
-				FA2B662927A8E62B003BA5A7 /* Storage.swift */,
+				FA2B663127A8EBF9003BA5A7 /* Storage.swift */,
 			);
 			path = todayWeather;
 			sourceTree = "<group>";
@@ -139,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				FA26887E27A1880E00A32FDE /* FirstViewController.swift */,
+				FA2B663327A9025E003BA5A7 /* SecondViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -292,11 +295,12 @@
 				FA2B663027A8E6D4003BA5A7 /* WeatherSurvice.swift in Sources */,
 				FA26887F27A1880E00A32FDE /* FirstViewController.swift in Sources */,
 				FA26887B27A1880E00A32FDE /* AppDelegate.swift in Sources */,
+				FA2B663427A9025E003BA5A7 /* SecondViewController.swift in Sources */,
 				FA3214B227A2B36F00F9D794 /* CustomTableViewCell.swift in Sources */,
 				FA2B662D27A8E68E003BA5A7 /* WeatherViewModel.swift in Sources */,
+				FA2B663227A8EBF9003BA5A7 /* Storage.swift in Sources */,
 				FA26887D27A1880E00A32FDE /* SceneDelegate.swift in Sources */,
 				FA2B662827A8E5EE003BA5A7 /* WeatherModel.swift in Sources */,
-				FA2B662A27A8E62B003BA5A7 /* Storage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
