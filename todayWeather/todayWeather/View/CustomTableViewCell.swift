@@ -23,4 +23,11 @@ class CustomTableViewCell: UITableViewCell {
   override func setSelected(_ selected: Bool, animated: Bool) {
       super.setSelected(selected, animated: animated)
   }
+  
+  // 셀의 재사용으로 인한 문제 해결
+  override func prepareForReuse() {
+    weatherImageView.image = nil
+    humidityLabel.text = nil
+    tempLabel.text = nil
+  }
 }
