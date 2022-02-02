@@ -8,7 +8,11 @@
 import Foundation
 
 // MARK : - Temp
-// 섭씨 화씨 계산 열거형
+// 섭씨 화씨
+enum TempMode {
+  case fahrenheit
+  case celsius
+}
 enum Temp {
   case fahrenheit(Double)
   case celsius(Double)
@@ -73,22 +77,22 @@ class WeatherViewModel {
   // 화씨 온도
   var fahrenheitTemp: String {
     let fahrenheit = Temp.fahrenheit(weatherModel.main.temp).temp
-    return String("\(fahrenheit)%")
+    return String("\(fahrenheit)℉")
   }
   
   var feelsLikeFahrenheitTemp: String {
     let fahrenheit = Temp.fahrenheit(weatherModel.main.feels_like).temp
-    return String("\(fahrenheit)%")
+    return String("\(fahrenheit)℉")
   }
   
   var minFahrenheitTemp: String {
     let fahrenheit = Temp.fahrenheit(weatherModel.main.temp_min).temp
-    return String("\(fahrenheit)%")
+    return String("\(fahrenheit)℉")
   }
   
   var maxFahrenheitTemp: String {
     let fahrenheit = Temp.fahrenheit(weatherModel.main.temp_max).temp
-    return String("\(fahrenheit)%")
+    return String("\(fahrenheit)℉")
   }
 
   var weatherImageName: String {

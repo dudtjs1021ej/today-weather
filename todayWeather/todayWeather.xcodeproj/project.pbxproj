@@ -127,9 +127,9 @@
 		FA26888E27A18A8100A32FDE /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				FA26888327A1881000A32FDE /* Assets.xcassets */,
 				FA26889227A18B7100A32FDE /* Font */,
 				FA26888527A1881000A32FDE /* LaunchScreen.storyboard */,
-				FA26888327A1881000A32FDE /* Assets.xcassets */,
 				FA26887A27A1880E00A32FDE /* AppDelegate.swift */,
 				FA26887C27A1880E00A32FDE /* SceneDelegate.swift */,
 				FA2B663F27A990AE003BA5A7 /* UIFontExtension.swift */,

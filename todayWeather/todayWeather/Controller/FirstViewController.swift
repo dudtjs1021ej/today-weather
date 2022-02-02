@@ -11,20 +11,32 @@ class FirstViewController: UIViewController {
   
   // MARK: - Properties
   @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var tempButton: UIButton!
   
   let customCellIdentifer: String = "customCell"
   let cellSpacingHeight: CGFloat = 5
   var weatherViewModel: WeatherViewModel?
   let citieNames = ["Gongju", "Gwangju", "Gumi", "Gunsan", "Daegu", "Daejeon", "Mokpo", "Busan", "Seosan", "Seoul", "Sokcho", "Suwon", "Suncheon", "Ulsan", "Iksan", "Jeonju", "Jeju", "Cheonan", "Cheongju", "Chuncheon"]
-
+  var tempMode = TempMode.celsius
   // MARK: LifeCycle
   override func viewDidLoad() {
     super.viewDidLoad()
     tableView.dataSource = self
     tableView.delegate = self
+    tempButton.addTarget(self, action: #selector(didTabButton), for: .touchUpInside)
   }
   
   // MARK: - Methods
+  @objc func didTabButton(_ sender: UIButton) {
+    switch tempMode {
+    case .fahrenheit:
+      tempMode = .celsius
+      tableView.reloadData()
+    case .celsius:
+      tempMode = .fahrenheit
+      tableView.reloadData()
+    }
+  }
   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     guard let nextVC: SecondViewController = segue.destination as? SecondViewController else { return }
     guard let cell: CustomTableViewCell = sender as? CustomTableViewCell else { return }
@@ -56,8 +68,14 @@ extension FirstViewController: UITableViewDataSource, UITableViewDelegate {
         DispatchQueue.main.async {
           self.weatherViewModel = WeatherViewModel(weatherModel: result)
           cell.humidityLabel.text = self.weatherViewModel?.humidity
-          cell.tempLabel.text = self.weatherViewModel?.celsiusTemp
           cell.weatherImageView.image = UIImage(named: self.weatherViewModel?.weatherImageName ?? "")
+          
+          switch self.tempMode { // tempMode에 따라 온도 바꿈
+          case .fahrenheit:
+            cell.tempLabel.text = self.weatherViewModel?.fahrenheitTemp
+          case .celsius:
+            cell.tempLabel.text = self.weatherViewModel?.celsiusTemp
+          }
         }
       case .failure(_ ):
         print("error")

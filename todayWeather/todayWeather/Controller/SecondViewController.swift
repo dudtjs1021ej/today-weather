@@ -13,6 +13,7 @@ class SecondViewController: UIViewController {
   let citieNames = ["Gongju", "Gwangju", "Gumi", "Gunsan", "Daegu", "Daejeon", "Mokpo", "Busan", "Seosan", "Seoul", "Sokcho", "Suwon", "Suncheon", "Ulsan", "Iksan", "Jeonju", "Jeju", "Cheonan", "Cheongju", "Chuncheon"]
   var selectedIndex: Int?
   var weatherViewModel: WeatherViewModel?
+  var tempMode: TempMode = .celsius
   
   @IBOutlet weak var tempView: UIView!
   @IBOutlet weak var etcView: UIView!
@@ -26,6 +27,7 @@ class SecondViewController: UIViewController {
   @IBOutlet weak var humidityLabel: UILabel!
   @IBOutlet weak var pressureLabel: UILabel!
   @IBOutlet weak var windLabel: UILabel!
+  @IBOutlet weak var tempButton: UIButton!
   
   // MARK: - LifeCycle
   override func viewDidLoad() {
@@ -33,10 +35,21 @@ class SecondViewController: UIViewController {
     self.navigationController?.navigationBar.tintColor = .black // navigationButton 검정으로 변경
     tempView.layer.cornerRadius = 20.0
     etcView.layer.cornerRadius = 20.0
+    tempButton.addTarget(self, action: #selector(didTabButton), for: .touchUpInside)
     setData()
   }
     
   // MARK - Methods
+  @objc func didTabButton(_ sender: UIButton) {
+    switch tempMode {
+    case .fahrenheit:
+      tempMode = .celsius
+      setData()
+    case .celsius:
+      tempMode = .fahrenheit
+      setData()
+    }
+  }
   func setData() {
     guard let selectedIndex = selectedIndex else {
       return
@@ -53,10 +66,19 @@ class SecondViewController: UIViewController {
           self.windLabel.text = self.weatherViewModel?.wind
           self.weatherImageView.image = UIImage(named: self.weatherViewModel?.weatherImageName ?? "")
           
-          self.tempLabel.text = self.weatherViewModel?.celsiusTemp
-          self.feelLikeTempLabel.text = self.weatherViewModel?.feelsLikeCelsiusTemp
-          self.minTempLabel.text = self.weatherViewModel?.minCelsiusTemp
-          self.maxTempLabel.text = self.weatherViewModel?.maxCelsiusTemp
+          switch self.tempMode { // tempMode에 따라 온도 text 바꿈
+          case .celsius:
+            self.tempLabel.text = self.weatherViewModel?.celsiusTemp
+            self.feelLikeTempLabel.text = self.weatherViewModel?.feelsLikeCelsiusTemp
+            self.minTempLabel.text = self.weatherViewModel?.minCelsiusTemp
+            self.maxTempLabel.text = self.weatherViewModel?.maxCelsiusTemp
+            
+          case .fahrenheit:
+            self.tempLabel.text = self.weatherViewModel?.fahrenheitTemp
+            self.feelLikeTempLabel.text = self.weatherViewModel?.feelsLikeFahrenheitTemp
+            self.minTempLabel.text = self.weatherViewModel?.minFahrenheitTemp
+            self.maxTempLabel.text = self.weatherViewModel?.maxFahrenheitTemp
+          }
         }
       case .failure(_ ):
         print("error")
